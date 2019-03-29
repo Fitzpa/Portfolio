@@ -56,29 +56,33 @@
     <main id="contact">
       <h1 class="lg-heading">Contact <span class="text-secondary">Me</span></h1>
       <h2 class="sm-heading">Here is how to reach me...</h2>
+      <div class="alert">Your message has been sent</div>
       <!-- <div class="boxes"> -->
       <div class="wrapper">
+        <div class="company-info">
+            <img src="assets/images/LouieSm.jpg" alt="Louie Fitzpatrick" class="bio-image">
+        </div>
         <div class="contact">
-          
-          <form>
+  
+          <form id="contactForm">
             <p>
               <label>Name</label>
-              <input type="text" name="name">
+              <input type="text" name="name" id="name" required>
             </p>
             <p>
               <label>Company</label>
-              <input type="text" name="company">
+              <input type="text" name="company" id="company">
             </p>
             <p>
               <label>Email</label>
-              <input type="email" name="email">
+              <input type="email" name="email" id="email" required>
             </p>
             <p class="full">
               <label>Message</label>
-              <textarea name="message" rows="5"></textarea>
+              <textarea name="message" rows="5" id="message"></textarea>
             </p>
             <p class="submit">
-              <button>Submit</button>
+              <button type="submit">Submit</button>
             </p>
           </form>
         </div>
@@ -101,7 +105,7 @@
     <footer id="main-footer">
       Copyright &copy; 2019
     </footer>
-
+    <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
     <script src="assets/js/main.js"></script>
   </body>
 </html>

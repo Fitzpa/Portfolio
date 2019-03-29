@@ -31,65 +31,61 @@ function toggleMenu() {
     showMenu = false;
   }
 }
-//---------------------------------------------------------------------
+//--------------------------------FIREBASE-------------------------------------
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyAHfw1dgV-lETw6OLRkqK2SNX1FUO9NM1w",
+  authDomain: "profilecontactform.firebaseapp.com",
+  databaseURL: "https://profilecontactform.firebaseio.com",
+  projectId: "profilecontactform",
+  storageBucket: "",
+  messagingSenderId: "349945662162"
+};
+firebase.initializeApp(config);
 
+var messageRef = firebase.database().ref('messages');
 
+// Listen for form submit
+document.getElementById("contactForm").addEventListener("submit", submitForm);
 
-// CONTACT ME 
-// Fetching HTML Elements in Variables by ID.
-var x = document.getElementById("form_sample");
-var createform = document.createElement('form'); // Create New Element Form
-createform.setAttribute("action", ""); // Setting Action Attribute on Form
-createform.setAttribute("method", "post"); // Setting Method Attribute on Form
-x.appendChild(createform);
+function submitForm(event) {
+  event.preventDefault();
 
-var heading = document.createElement('h2'); // Heading of Form
-heading.innerHTML = "Contact Form ";
-createform.appendChild(heading);
+ 
 
-var line = document.createElement('hr'); // Giving Horizontal Row After Heading
-createform.appendChild(line);
+  // Get values
+  var name = getInputVal("name");
+  var company = getInputVal("company");
+  var email = getInputVal("email");
+  var message = getInputVal("message");
+  console.log(name);
 
-var linebreak = document.createElement('br');
-createform.appendChild(linebreak);
+  // Save the messages to firebase
+  saveMessage(name, company, email, message);
 
-var namelabel = document.createElement('label'); // Create Label for Name Field
-namelabel.innerHTML = "Your Name : "; // Set Field Labels
-createform.appendChild(namelabel);
+  // Alert user that the message was sent
+  document.querySelector('.alert').style.display = 'block';
 
-var inputelement = document.createElement('input'); // Create Input Field for Name
-inputelement.setAttribute("type", "text");
-inputelement.setAttribute("name", "dname");
-createform.appendChild(inputelement);
+  //hide alert after a few seconds
+  setTimeout(function() {
+    document.querySelector(".alert").style.display = 'none';
+  }, 3000);
 
-var linebreak = document.createElement('br');
-createform.appendChild(linebreak);
+  // Clears the form
+  document.getElementById("contactForm").reset();
+}
 
-var emaillabel = document.createElement('label'); // Create Label for E-mail Field
-emaillabel.innerHTML = "Your Email : ";
-createform.appendChild(emaillabel);
+// Function to get get form values
+function getInputVal(id) {
+  return document.getElementById(id).value;
+}
 
-var emailelement = document.createElement('input'); // Create Input Field for E-mail
-emailelement.setAttribute("type", "text");
-emailelement.setAttribute("name", "demail");
-createform.appendChild(emailelement);
-
-var emailbreak = document.createElement('br');
-createform.appendChild(emailbreak);
-
-var messagelabel = document.createElement('label'); // Append Textarea
-messagelabel.innerHTML = "Your Message : ";
-createform.appendChild(messagelabel);
-
-var texareaelement = document.createElement('textarea');
-texareaelement.setAttribute("name", "dmessage");
-createform.appendChild(texareaelement);
-
-var messagebreak = document.createElement('br');
-createform.appendChild(messagebreak);
-
-var submitelement = document.createElement('input'); // Append Submit Button
-submitelement.setAttribute("type", "submit");
-submitelement.setAttribute("name", "dsubmit");
-submitelement.setAttribute("value", "Submit");
-createform.appendChild(submitelement);
+function saveMessage(name, company, email, message) {
+  var newMessageRef = messageRef.push();
+  newMessageRef.set({
+    name: name,
+    company: company,
+    email: email,
+    message: message
+  });
+}

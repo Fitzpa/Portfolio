@@ -363,6 +363,12 @@ ul {
   margin: 0 0 1rem 0;
 }
 
+.company-info img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .company-info {
   background: #003333;
 }
@@ -370,6 +376,7 @@ ul {
 .contact {
   background: #004d4d;
 }
+
 
 /* ----FORM STYLES---- */
 
@@ -415,6 +422,15 @@ ul {
   transition: all 0.3s ease-out;
 }
 
+.alert {
+  text-align: center;
+  padding: 10px;
+  background: #ff3333;
+  color: #fef6eb;
+  margin-bottom: 10px;
+  display: none;
+}
+
 /* --------------------------------------------------------------- */
 
 @media screen and (min-width: 1824px) {
@@ -429,9 +445,16 @@ ul {
     grid-template-columns: repeat(4, 1fr);
   }
   .wrapper {
-    grid-template-columns: 3fr;
+    grid-template-columns: 1fr 2fr;
     margin-right: 8em;
     margin-left: 8em;
+  }
+  .company-info img {
+    display: grid;
+    margin: auto;
+  }
+  .company-info{
+    margin: auto;
   }
 }
 

@@ -210,10 +210,6 @@ main .icons a:hover {
 main#home {
   overflow: hidden;
 }
-main#contact {
-  margin-left: 8rem;
-  margin-right: 8rem;
-}
 
 main#home h1 {
   margin-top: 20vh;
@@ -329,18 +325,6 @@ main#home h1 {
   color: #003333;
 }
 
-label {
-  text-align: center;
-}
-
-#messegeId {
-  margin-bottom:1rem;
-}
-
-#emailAddress {
-  margin-bottom:1rem;
-}
-
 #main-footer {
   text-align: center;
   padding: 1rem;
@@ -349,77 +333,125 @@ label {
   height: 60px;
 }
 
-/* ---------------------------------- */
-
 /* ------------ CONTACT ME STYLES ------------------- */
 
-/* div#form_sample{
-text-align:center;
-border:1px solid #ccc;
-width:80%;
-padding:0 50px 15px;
-margin-top:20px;
-box-shadow:0 0 15px;
-border-radius:6px;
-float:left
-}
-#main h1{
-margin-top:40px
-}
-hr{
-margin-top:-5px
-}
-label{
-float:left;
-font-size:16px
-}
-input[type="text"]{
-width:100%;
-margin-top:10px;
-height:35px;
-margin-bottom:25px;
-padding:10px;
-border:3px solid #2BC1F2
-}
-textarea{
-width:100%;
-border:3px solid #2BC1F2;
-padding:10px;
-margin-bottom:25px;
-margin-top:10px;
-height:100px;
-resize:none
-}
-input[type="submit"]{
-width:100%;
-padding:10px 45px;
-background-color:#2BC1F2;
-border:none;
-color:#fff;
-font-size:18px;
-font-weight:700;
-cursor:pointer;
-}
-/* -------------------------------------
-CSS for Sidebar (optional)
----------------------------------------- */
-
-div#fugo {
-  float: right
+main#contact {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
 }
 
-*/
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.wrapper {
+  margin-right: 4em;
+  margin-left: 4em;
+  display: grid;
+  grid-template-columns: 3fr;
+  box-shadow: 0 0 20px 0 rgba(72, 94, 116, 0.7);
+}
+
+.wrapper>* {
+  padding: 3em;
+}
+
+.company-info h3, .company-info ul {
+  text-align: left;
+  margin: 0 0 1rem 0;
+}
+
+.company-info {
+  background: #003333;
+}
+
+.contact {
+  background: #004d4d;
+}
+
+/* ----FORM STYLES---- */
+
+.contact form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.contact form label {
+  display: block;
+}
+
+.contact form p {
+  margin: 0;
+}
+
+.contact form .full {
+  grid-column: 1 / 3;
+}
+
+.contact form .submit {
+  grid-column: 1fr;
+}
+
+.contact form button, .contact form input, .contact form textarea {
+  width: 100%;
+  padding: 1em;
+  border: 1px solid #003333;
+}
+
+.contact form button {
+  background: #003333;
+  color: #fef6eb;
+  border: 0;
+  text-transform: uppercase;
+}
+
+.contact form button:hover, .contact form button:focus {
+  background: #ff3333;
+  color: #000;
+  outline: 0;
+  transition: all 0.3s ease-out;
+}
+
 /* --------------------------------------------------------------- */
+
+@media screen and (min-width: 1824px) {
+  .wrapper {
+    margin-right: 15em;
+    margin-left: 15em;
+  }
+}
 
 @media screen and (min-width: 1171px) {
   .projects {
     grid-template-columns: repeat(4, 1fr);
   }
+  .wrapper {
+    grid-template-columns: 3fr;
+    margin-right: 8em;
+    margin-left: 8em;
+  }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1170px) {
+  main#contact {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+  }
   .projects {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .wrapper {
+    grid-template-columns: 3fr;
+    margin-right: 1em;
+    margin-left: 1em;
+  }
+  .contact form .submit {
+    grid-column: 1 / 3;
   }
 }
 
@@ -461,6 +493,20 @@ div#fugo {
   .projects {
     grid-template-columns: repeat(2, 1fr);
   }
+  .company-info h3, .company-info ul {
+    text-align: center;
+  }
+  .wrapper>* {
+    padding: 1em;
+  }
+  .wrapper {
+    grid-template-columns: 3fr;
+    margin-right: .5em;
+    margin-left: .5em;
+  }
+  .contact form .submit {
+    grid-column: 1 / 3;
+  }
 }
 
 @media screen and (max-width: 519px) {
@@ -475,6 +521,20 @@ div#fugo {
     text-align: center;
   }
   .projects {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1 / 3;
+  }
+  .company-info h3, .company-info ul {
+    text-align: center;
+  }
+  .wrapper>* {
+    padding: 1em;
+  }
+  .wrapper {
+    grid-template-columns: 3fr;
+    margin-right: 0;
+    margin-left: 0;
+  }
+  .contact form .submit {
+    grid-column: 1 / 3;
   }
 }
